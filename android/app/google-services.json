@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "432650538639",
+    "firebase_url": "https://app-mobile-meaning.firebaseio.com",
+    "project_id": "app-mobile-meaning",
+    "storage_bucket": "app-mobile-meaning.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432650538639:android:d318e96dd24cd6ef47eafa",
+        "android_client_info": {
+          "package_name": "com.meaningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432650538639-7qp4lhl27tgr66aimso9v46rhbfv8epm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meaningapp",
+            "certificate_hash": "7f7a01d060cc0a4a9772610555213f0d79c09b0a"
+          }
+        },
+        {
+          "client_id": "432650538639-ppiabnnp93e3b1s8dfqbmqts6cp0mj3u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meaningapp",
+            "certificate_hash": "897de4c0982d466ed2ec9ffbfb34e148f5016103"
+          }
+        },
+        {
+          "client_id": "432650538639-3g807mnl9gqhs2sv9ifv0f1mnalafvc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meaningapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "432650538639-5cmhnhv3qbklhs79re0no1jjg4v9eo9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4cxnOHOFX685dOiHzse7TSQL6U78dZ9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432650538639-lh45nbv1veeb4ear4vg68jn70n220rdb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "432650538639-rd7vq84gabj2ko6smietfp68qdldli21.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
