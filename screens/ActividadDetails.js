@@ -11,7 +11,7 @@ export default function ActividadDetails({ route, navigation }) {
   const {DescripcionActividad} = route.params;
   const {ActividadPDF} = route.params;
 
-  if (Video){
+  if (Video !== "undefined"){
       return(
         <View style={styles.container}>
           <ScrollView>

@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Button, Text, TouchableOpacity, TextInput, View, StyleSheet, KeyboardAvoidingView, FlatList, StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import RNPickerSelect from 'react-native-picker-select';
 import {Card} from 'react-native-paper';
-import { ACTIVIDADES } from './Actividades';
-import { TIPS } from './Tips';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
+import database from '@react-native-firebase/database';
 
 const cursos = [
   { label: 'Prekinder/Kinder', value: 'Prekinder/Kinder' },
@@ -25,16 +24,58 @@ const materias = [
 ];
 
 class MaterialScreen extends Component {
-  //constructor(props) {
-    //super(props);
+  constructor(props) {
+    super(props);
    //el state de aqui abajo seria this.state y el extends Component seria extends React.Component
-  state = {
-    favCurso: undefined,
-    favMateria: undefined,
-    Actividades: ACTIVIDADES,
-    Tips: TIPS,
-    ActFiltered: ACTIVIDADES,
-    TipsFiltered: TIPS,
+    this.state = {
+      favCurso: undefined,
+      favMateria: undefined,
+      Actividades: [],
+      Tips: [],
+      ActFiltered: [],
+      TipsFiltered: []
+    }
+  }
+
+  componentDidMount(){
+    database()
+    .ref('/Actividades/')
+    .once('value').then((snapshot) => {
+      var li = []
+      snapshot.forEach((child) => {
+        li.push({
+          key: child.key,
+          Titulo: child.val().Titulo,
+          Fecha: child.val().Fecha,
+          Curso: child.val().Curso,
+          Materia: child.val().Materia,
+          DescripcionVideo: child.val().DescripcionVideo,
+          Video: child.val().Video,
+          DescripcionActividad: child.val().DescripcionActividad,
+          ActividadPDF: child.val().ActividadPDF
+        });
+      });
+      this.setState({Actividades : li})
+      this.setState({ActFiltered : li})
+    })
+
+    database()
+    .ref('/Tips/')
+    .once('value').then((snapshot) => {
+      var mi = []
+      snapshot.forEach((child) => {
+        mi.push({
+          key:child.key,
+          Titulo: child.val().Titulo,
+          Fecha: child.val().Fecha,
+          Curso: child.val().Curso,
+          DescripcionVideo: child.val().DescripcionVideo,
+          DescripcionActividad: child.val().DescripcionActividad
+        });
+      });
+      this.setState({Tips : mi})
+      this.setState({TipsFiltered : mi })
+    })
   }
 
   getActividad=(item)=>{
@@ -70,7 +111,7 @@ class MaterialScreen extends Component {
       }
     }
   }
-    
+
   render() {
     return(
       <KeyboardAvoidingView behavior="height" style={styles.container}>
@@ -89,6 +130,7 @@ class MaterialScreen extends Component {
           <View style={{flex:1, borderWidth: 1, borderColor: '#DDDDDD'}}>
             <FlatList
               data={this.state.ActFiltered}
+              keyExtractor={(item)=> item.key}
               renderItem={({item})=>
                 <Card style={{backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#DDDDDD', borderRadius: 0}} onPress={this.getActividad.bind(this,item)}>
                   <View style= {{flex: 1, flexDirection:'row', padding: 5, marginLeft: 6}}>
@@ -101,7 +143,7 @@ class MaterialScreen extends Component {
                   </View>
                 </Card>
               }
-              keyExtractor={item=>item.ID}
+              //keyExtractor={item=>item.ID}
             />
           </View>
         </View>
@@ -111,6 +153,7 @@ class MaterialScreen extends Component {
            <View style={{flex: 1, borderWidth: 1, borderColor:'#DDDDDD'}}>
             <FlatList
               data={this.state.TipsFiltered}
+              keyExtractor={(item)=> item.key}
               renderItem={({item})=>
                 <Card style={{backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#DDDDDD', borderRadius: 0}} onPress={this.getTip.bind(this,item)}>
                   <View style= {{flex: 1, flexDirection:'row', padding: 5, marginLeft: 6}}>
@@ -123,7 +166,7 @@ class MaterialScreen extends Component {
                   </View>
                 </Card>
               }
-              keyExtractor={item=>item.ID}
+              //keyExtractor={item=>item.ID}
             />
           </View>
         </View>
