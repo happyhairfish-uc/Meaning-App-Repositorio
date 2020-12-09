@@ -106,7 +106,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   headerobjact: {
-    fontFamily: 'Ubuntu_500Medium', 
+    fontFamily: 'Ubuntu-Regular',
+    fontWeight: 'bold', 
     fontSize: 18, 
     textAlign: 'left', 
     borderBottomWidth: 1,
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   descripciones: {
     fontSize: 16, 
     textAlign: 'left', 
-    fontFamily:'Ubuntu_400Regular', 
+    fontFamily:'Ubuntu-Regular', 
     padding: 3
   }
 });

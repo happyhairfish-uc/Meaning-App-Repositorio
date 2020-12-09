@@ -126,7 +126,7 @@ class MaterialScreen extends Component {
         </View>
 
         <View style={styles.ContainerActTips}>
-          <Text style={{padding: 5, fontFamily: 'SourceSansPro_600SemiBold', fontSize: 21, textAlign: 'left', borderBottomColor: '#ADADAD'}}>Actividades</Text>
+          <Text style={{padding: 5, fontFamily: 'SourceSansPro-Bold', fontSize: 21, textAlign: 'left', borderBottomColor: '#ADADAD'}}>Actividades</Text>
           <View style={{flex:1, borderWidth: 1, borderColor: '#DDDDDD'}}>
             <FlatList
               data={this.state.ActFiltered}
@@ -134,12 +134,12 @@ class MaterialScreen extends Component {
               renderItem={({item})=>
                 <Card style={{backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#DDDDDD', borderRadius: 0}} onPress={this.getActividad.bind(this,item)}>
                   <View style= {{flex: 1, flexDirection:'row', padding: 5, marginLeft: 6}}>
-                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu_500Medium', marginRight: 6}}>{item.Titulo}</Text>
+                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu-Regular', marginRight: 6, fontWeight: 'bold'}}>{item.Titulo}</Text>
                   </View>
 
                   <View style= {{flex: 1, flexDirection:'row', padding: 6, marginLeft: 6}}>
-                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu_400Regular'}}>{item.Fecha}</Text>
-                    <Text style={{flex: 2, fontSize: 13, textAlign: 'left', paddingRight: 6, marginLeft: 23, fontFamily: 'Ubuntu_400Regular'}}>{`${item.Curso} ${item.Materia}`}</Text> 
+                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu-Regular'}}>{item.Fecha}</Text>
+                    <Text style={{flex: 2, fontSize: 13, textAlign: 'left', paddingRight: 6, marginLeft: 23, fontFamily: 'Ubuntu-Regular'}}>{`${item.Curso} ${item.Materia}`}</Text> 
                   </View>
                 </Card>
               }
@@ -149,7 +149,7 @@ class MaterialScreen extends Component {
         </View>
 
         <View style={styles.ContainerActTips}> 
-          <Text style={{fontFamily: 'SourceSansPro_600SemiBold', fontSize: 21, padding: 5, textAlign: 'left', borderBottomColor: '#ADADAD'}}>Tips</Text>
+          <Text style={{fontFamily: 'SourceSansPro-Bold', fontSize: 21, padding: 5, textAlign: 'left', borderBottomColor: '#ADADAD'}}>Tips</Text>
            <View style={{flex: 1, borderWidth: 1, borderColor:'#DDDDDD'}}>
             <FlatList
               data={this.state.TipsFiltered}
@@ -157,12 +157,12 @@ class MaterialScreen extends Component {
               renderItem={({item})=>
                 <Card style={{backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#DDDDDD', borderRadius: 0}} onPress={this.getTip.bind(this,item)}>
                   <View style= {{flex: 1, flexDirection:'row', padding: 5, marginLeft: 6}}>
-                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu_500Medium', marginRight:6}}>{item.Titulo}</Text>
+                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu-Regular', fontWeight: 'bold', marginRight:6}}>{item.Titulo}</Text>
                   </View>
 
                   <View style= {{flex: 1, flexDirection:'row', padding: 6, marginLeft: 6}}>
-                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu_400Regular'}}>{item.Fecha}</Text>
-                    <Text style={{flex: 2, fontSize: 13, textAlign: 'left', paddingRight: 6, marginLeft: 60, fontFamily: 'Ubuntu_400Regular'}}>{`Nivel: ${item.Curso}`}</Text> 
+                    <Text style={{flex: 1, fontSize: 13, fontFamily: 'Ubuntu-Regular'}}>{item.Fecha}</Text>
+                    <Text style={{flex: 2, fontSize: 13, textAlign: 'left', paddingRight: 6, marginLeft: 60, fontFamily: 'Ubuntu-Regular'}}>{`Nivel: ${item.Curso}`}</Text> 
                   </View>
                 </Card>
               }

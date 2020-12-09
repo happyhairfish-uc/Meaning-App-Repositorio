@@ -66,7 +66,8 @@ function HomeStack() {
           options={{
             title: 'Actividad  +Meaning',
             headerStyle: {elevation: 0, shadowOpacity: 0, borderBottomWidth: 0, backgroundColor: '#DDDDDD'},
-            headerTintColor: '#333333'
+            headerTintColor: '#333333',
+            headerTitleStyle: {fontFamily: 'SourceSansPro-Bold'}
           }}
         />
         <Stack.Screen
@@ -74,7 +75,9 @@ function HomeStack() {
           component= {TipDetails}
           options={{
             title: 'Tip +Meaning',
-            headerStyle: {elevation: 0, shadowOpacity: 0, borderBottomWidth: 0, backgroundColor: '#DDDDDD'},
+            headerStyle: {elevation: 0, shadowOpacity: 0, borderBottomWidth: 0, backgroundColor: '#FFFFFF'},
+            headerTitleAlign: 'center',
+            headerTitleStyle: {fontFamily: 'SourceSansPro-Bold'},
             headerTintColor: '#333333'
           }}
         />
