@@ -67,7 +67,7 @@ export default function TipDetails({ route,navigation }) {
                     autoCorrect= {false}
                     style={{flex: 1, padding: 5, fontSize: 15, borderBottomWidth: 1, borderColor: '#DDDDDD'}} />
                 <TextInput
-                  underlineColorAndroid='#FFFFFF'
+                  //underlineColorAndroid='#FFFFFF'
                   value={Comment}
                   onChangeText={userComment => setComment(userComment)}
                   placeholder='Escribe tu respuesta aqui'

@@ -2,14 +2,19 @@ import React, { Component, useState, useCallback, useRef } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, Linking } from 'react-native';
 import {WebView} from 'react-native-webview';
 import HyperLink from 'react-native-hyperlink';
-
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import LikeButton from '../components/LikeButton';
 
 export default function ActividadDetails({ route, navigation }) {
-  const { Titulo } = route.params;
+  const {Titulo} = route.params;
   const {DescripcionVideo} = route.params;
   const {Video} = route.params;
   const {DescripcionActividad} = route.params;
   const {ActividadPDF} = route.params;
+  const {key} = route.params;
+  const {Fecha} = route.params;
+  const {Curso} = route.params;
+  const {Materia} = route.params;
 
   if (Video !== "undefined"){
       return(
@@ -31,10 +36,10 @@ export default function ActividadDetails({ route, navigation }) {
                 <Text style={styles.headerobjact}>Actividad</Text>
                 <Text style={styles.descripciones}>{DescripcionActividad}</Text>
                 <HyperLink
-                  linkStyle={{ fontSize: 16, textAlign: 'left', color: '#2980b9', fontFamily:'Ubuntu_400Regular', padding: 3}}
+                  linkStyle={{ fontSize: 16, textAlign: 'left', color: '#2980b9', fontFamily:'Ubuntu-Regular', padding: 3}}
                   linkText={ url => url === ActividadPDF ? 'aquí' : url}
                   >
-                  <Text style={{fontSize: 16, textAlign: 'left', fontFamily:'Ubuntu_400Regular', padding: 3, marginVertical: 10}}>{`Descargue ${ActividadPDF} la guía para facilitar la realización de la actividad.`}</Text>
+                  <Text style={{fontSize: 16, textAlign: 'left', fontFamily:'Ubuntu-Regular', padding: 3, marginVertical: 10}}>{`Descargue ${ActividadPDF} la guía para facilitar la realización de la actividad.`}</Text>
                 </HyperLink>
               </View>
             </HyperLink>
@@ -45,21 +50,33 @@ export default function ActividadDetails({ route, navigation }) {
     return(
       <View style={styles.container}>
         <ScrollView>
-          <Text style={styles.tituloact}>{Titulo}</Text>
+          <View style={{flexDirection: 'row', justifyContent: 'center', textAlign: 'center'}}>
+            <Text style={styles.tituloact}>{Titulo}</Text>
+            <Text style={{flex: 1, marginTop: 6, alignSelf: 'center'}}><LikeButton Key={key} titulo={Titulo} descripcionVideo={DescripcionVideo} video={Video} descripcionActividad={DescripcionActividad} actividadPDF={ActividadPDF} fecha={Fecha} curso={Curso} materia={Materia}/></Text>
+          </View>
+          
           <HyperLink linkDefault={ true } linkStyle={{color: '#2980b9' }}>
             <View style={styles.textbox}>
               <Text style={styles.headerobjact}>Objetivo</Text>
-              <Text style={styles.descripciones}>{DescripcionVideo}</Text>
+              <View style={styles.descripciones}>
+                <Text></Text>
+                <Text style={{fontSize: 15, padding: 6}}>{DescripcionVideo}</Text>
+              </View>
+            
             </View>
             <View style={styles.textbox}>
               <Text style={styles.headerobjact}>Actividad</Text>
-              <Text style={styles.descripciones}>{DescripcionActividad}</Text>
-              <HyperLink
-                  linkStyle={{ fontSize: 16, textAlign: 'left', color: '#2980b9', fontFamily:'Ubuntu_400Regular', padding: 3}}
+              <View style={styles.descripciones}>
+                <Text></Text>
+                <Text style={{fontSize: 15, padding: 6}}>{DescripcionActividad}</Text>
+              
+                <HyperLink
+                  linkStyle={{ fontSize: 15, textAlign: 'left', color: '#2980b9', fontFamily:'Ubuntu-Regular', padding: 3}}
                   linkText={ url => url === ActividadPDF ? 'aquí' : url}
                   >
-                <Text style={{fontSize: 16, textAlign: 'left', fontFamily:'Ubuntu_400Regular', padding: 3, marginVertical: 10}}>{`Descargue ${ActividadPDF} la guía para facilitar la realización de la actividad.`}</Text>
-              </HyperLink>
+                  <Text style={{fontSize: 15, textAlign: 'left', fontFamily:'Ubuntu-Regular', padding: 3, marginVertical: 10}}>{`Descargue ${ActividadPDF} la guía para facilitar la realización de la actividad.`}</Text>
+                </HyperLink>
+              </View>
             </View>
           </HyperLink>
         </ScrollView>
@@ -83,41 +100,52 @@ const styles = StyleSheet.create({
     marginHorizontal:10
   },
   tituloact: {
-    textAlign: 'left',
+    flex: 6,
     marginHorizontal:6,
     marginTop: 6, 
     padding: 5,
+    alignSelf: 'center',
     fontSize: 20,
-    fontFamily:'SourceSansPro_600SemiBold' ,
+    fontFamily:'SourceSans-Pro' ,
+    fontWeight: 'bold',
     color: '#333333'
   },
   textbox: {
     flex: 1, 
     marginHorizontal:6,
-    marginTop: 10, 
-    borderRadius: 4,  
-    padding: 6, 
-    borderColor: '#DDDDDD',
-    borderWidth: 1,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.80,
-    elevation: 5,
+    marginTop: 10,  
+    padding: 6,
+    
   },
   headerobjact: {
     fontFamily: 'Ubuntu-Regular',
-    fontWeight: 'bold', 
-    fontSize: 18, 
+    fontSize: 20, 
     textAlign: 'left', 
-    borderBottomWidth: 1,
-    padding: 3,
-    borderBottomColor: '#DDDDDD'
+    padding: 6,
+    elevation: 6,
+    marginLeft: 13, 
+    borderRadius: 5,
+    backgroundColor: '#FFFFFF',
+    color: '#000000',
+    borderWidth:1,
+    borderColor: '#FFBD3A',
+    position: 'absolute',
   },
   descripciones: {
-    fontSize: 16, 
-    textAlign: 'left', 
-    fontFamily:'Ubuntu-Regular', 
-    padding: 3
+    position: 'relative',
+      flex: 2,
+      borderRadius: 4, 
+      borderColor: '#DDDDDD',
+      borderWidth: 1,
+      textAlign: 'left',
+      fontFamily: 'Ubuntu-Regular', 
+      padding: 6,
+      marginTop: 13,
+      backgroundColor: '#FFFFFF',
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.80,
+      elevation: 5,
   }
 });

@@ -4,13 +4,16 @@ import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import database from '@react-native-firebase/database';
+import auth from '@react-native-firebase/auth';
 
-import MaterialScreen from '../screens/MaterialScreen'
-import MasScreen from '../screens/MasScreen'
-import ActividadDetails from '../screens/ActividadDetails'
-import TipDetails from '../screens/TipDetails'
+import MaterialScreen from '../screens/MaterialScreen';
+import MasScreen from '../screens/MasScreen';
+import ActividadDetails from '../screens/ActividadDetails';
+import TipDetails from '../screens/TipDetails';
 import ICONHOME from '../assets/Home.png';
 import ICONMAS from '../assets/Mas.png';
+import LikesScreen from '../screens/LikesScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,6 +54,18 @@ const Stack = createStackNavigator();
 
 function HomeStack() {
 
+  var user = auth().currentUser;
+  var name, email, uid;
+
+  if (user != null) {
+    database()
+    .ref('/Users/' + user.uid)
+    .update({
+      name: user.displayName,
+      email: user.email
+    })
+  }
+   
   return (
 
     //<NavigationContainer>
@@ -79,6 +94,17 @@ function HomeStack() {
             headerTitleAlign: 'center',
             headerTitleStyle: {fontFamily: 'SourceSansPro-Bold'},
             headerTintColor: '#333333'
+          }}
+        />
+        <Stack.Screen
+          name="Likes"
+          component= {LikesScreen}
+          options={{
+            title: 'Mis Favoritos',
+            headerStyle: {elevation: 0, shadowOpacity: 0, borderBottomWidth: 0, backgroundColor: '#FFFFFF'},
+            headerTitleAlign: 'center',
+            headerTintColor: '#333333',
+            headerTitleStyle: {fontFamily: 'SourceSansPro-Bold'}
           }}
         />
       </Stack.Navigator>
