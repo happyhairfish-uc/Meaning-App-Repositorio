@@ -6,6 +6,8 @@ import {Card} from 'react-native-paper';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 import database from '@react-native-firebase/database';
 
+//estos dos const se usaban para crear los dos filtros, pero como los tuve que sacar ya no se ve donde se usa, pero lo puedes usar en el futuro y como no cambia nada de la vista
+//por ahora, por eso los deje nomas.
 const cursos = [
   { label: 'Prekinder/Kinder', value: 'Prekinder/Kinder' },
   { label: '1° Básico', value: '1° Básico' },
@@ -26,7 +28,6 @@ const materias = [
 class MaterialScreen extends Component {
   constructor(props) {
     super(props);
-   //el state de aqui abajo seria this.state y el extends Component seria extends React.Component
     this.state = {
       favCurso: undefined,
       favMateria: undefined,
@@ -37,6 +38,8 @@ class MaterialScreen extends Component {
     }
   }
 
+  //aqui similar a lo de LikesScreen, voy agarrando los valores de cada actividad y las voy guardando en una lista li que luego va ser la lista Actividades.
+  //mismo para lo de los Tips, pero va ser otra lista llamada Tips.
   componentDidMount(){
     database()
     .ref('/Actividades/')
@@ -78,6 +81,9 @@ class MaterialScreen extends Component {
     })
   }
 
+  //estas dos funciones de abajo se llaman cuando uno apreta una Actividad o Tip de la lista en el celular, y de lleva a ver esa actividad/tip.
+  //se pone item dentro del parentesis y todo lo anterior para que se pueda "enviar" sus porpiedadas y todo eso a ActividadDetails, y por eso despues se hace lo que sale
+  //al principio de ActividadDetails y TipDetails (que ya explique alla).
   getActividad=(item)=>{
     this.props.navigation.navigate('Actividad', item);
   }
@@ -86,6 +92,8 @@ class MaterialScreen extends Component {
     this.props.navigation.navigate('Tip', item);
   }
 
+  //Esto tambien existe en LikeScreen, y es lo del buscador. A medida qu uno escribe va "filtrando" para que el titulo de la Actividad o Tip sea igual a lo que la persona esta escribiendo.
+  //Cuando "filtre", va poner la nueva "lista" que haga sentido con lo que la persona escriba y esta lista es ActFiltered o TipsFiltered.
   handleSearch(textsearch){
     this.setState({
       ActFiltered: this.state.Actividades.filter(i => i.Titulo.toLowerCase().indexOf(textsearch.toLowerCase()) !== -1)});
@@ -93,6 +101,7 @@ class MaterialScreen extends Component {
       TipsFiltered: this.state.Tips.filter(i => i.Titulo.toLowerCase().indexOf(textsearch.toLowerCase()) !== -1)});
   }
 
+  //esto es lo que se usaba en lo de los filtros, pero se sacaron los filtros pero deje la funcion por si quieres incorporarla mas adelante.
   FilterSelect() {
     const { favCurso, favMateria } = this.state;
     if (favCurso == undefined){

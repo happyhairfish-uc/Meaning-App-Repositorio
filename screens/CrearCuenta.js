@@ -9,7 +9,9 @@ import {windowHeight, windowWidth} from '../utils/Dimensions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { AuthContext } from '../navigation/AuthProvider';
 
-
+//esto es para crear una cuenta por si la persona no quiere o no tiene una cuenta de google.
+//como explique en el AuthProvider, aqui se llama el AuthContext para usar el register.
+//no arregle o actualice la apariencia de esta vista tanto, asique actualizala para que siga la onda de las otras vistas.
 export default function CrearCuenta({navigation}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

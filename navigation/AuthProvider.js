@@ -4,6 +4,8 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 
 export const AuthContext = createContext({});
 
+//todo lo siguiente se usa en los diferentes screens, uno va llamar AuthContext en otra parte y puede usar el coso de register si es que se tiene que registrar, o el de logout en la pantalla de Mas cuando uno quiera cerrar sesion.
+
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
 

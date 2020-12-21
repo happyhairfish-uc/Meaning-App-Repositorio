@@ -34,7 +34,9 @@ class LikesScreen extends Component {
       LikesFiltered: []
     }
   }
-    
+  
+  //aqui el user= auth().. es para identificar el usuario del momento.
+  //en el Database, lo que pasa es que voy leyendo la informacion de los Likes que sale dentro del usuario del momento y voy guardando cada valor en una lista que se llama like y luego la lista Likes va ser eso.
   componentDidMount(){
     var user = auth().currentUser;
 
@@ -60,6 +62,7 @@ class LikesScreen extends Component {
     })
   }
 
+  //esto es para cuando se use lo de los filtros, pero como solo son actividades de Jardin, no se usario tanto esto por ahora.
   FilterSelect() {
     const { favCurso, favMateria } = this.state;
     if (favCurso == undefined){
@@ -73,7 +76,8 @@ class LikesScreen extends Component {
       }
     }
   }
-
+  
+  //Las dos siguientes funciones son iguales que las de Material Screen, asique lee la descripcion que escribi alla.
   getActividad=(item)=>{
     this.props.navigation.navigate('Actividad', item);
   }

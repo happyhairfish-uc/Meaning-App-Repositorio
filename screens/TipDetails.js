@@ -18,11 +18,14 @@ export default function TipDetails({ route,navigation }) {
   const [Name, setName] = useState('');
   const [User, setUser] = useState(['']);
 
+  //Cuando se apreta el boton de mas o agregar, se llama esta funcion que agrega el comentario escrito por el usuario en la seccion de Comentarios dentro de Tips.
   function sendComment(Comment, Name) {
     database().ref('/Tips/' + key + '/Comentarios').child(Name).set({
       Comentario: Comment})
   };
 
+  //Aqui similar a lo que se hace en ActividadDetails, uno crea una lista con los "valores" del comentario, como el nombre y el comentario escrito, pera luego 
+  //leer estos valores de la lista e imprimirilos y mostrarles en la seccion de m'as abajo donde se puede leer todos los mensajes.
   database()
     .ref('/Tips/' + key + '/Comentarios')
     .once('value').then((snapshot) => {

@@ -17,6 +17,8 @@ import LikesScreen from '../screens/LikesScreen';
 
 const Tab = createBottomTabNavigator();
 
+//Esto es como para que el LoginScreen te lleve al InicioScreen, que es donde salen los tabs abajo de Material y Mas
+
 function InicioScreen() {
   return (
     <Tab.Navigator
@@ -57,6 +59,9 @@ function HomeStack() {
   var user = auth().currentUser;
   var name, email, uid;
 
+  //Lo siguiente es para que cuando un usuario haga login, cada vez que se mete una persona nueva se sube su informacion al realtime database y cuando ya es una persona que ya se
+  //ha metido antes, solo se hace update para no borrar la informacion que esta tendro de la cosa de eses usuario, como sus likes por ejemplo.
+
   if (user != null) {
     database()
     .ref('/Users/' + user.uid)
@@ -65,6 +70,8 @@ function HomeStack() {
       email: user.email
     })
   }
+
+  //lo siguiente son todas las "vistas". Antes hice los tabs, ahora lo que esta abajo no tiene ninguna tab abajo, solo son todas las vistas por las que uno podria llegar usando navigation.
    
   return (
 

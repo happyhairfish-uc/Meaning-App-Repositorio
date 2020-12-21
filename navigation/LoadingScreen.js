@@ -28,6 +28,8 @@ export default function LoadingScreen() {
     return <Loading />;
   }
 
+  //Aqui vas a entender la diferencia entre Homestack y AuthStack y por eso son archivos distintos. si el usuario ya esta logged in, uno va a HomeStack, si no, uno va a AuthStack.
+
   return(
     <NavigationContainer>
       {user ? <HomeStack /> : <AuthStack />}

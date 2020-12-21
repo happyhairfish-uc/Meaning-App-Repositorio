@@ -6,6 +6,10 @@ import headerlogo from './logos/logo2.png';
 import { AuthContext } from '../navigation/AuthProvider';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 
+
+//aqui la vista de Mas es bastante simple y no necesita mucha explicacion, esta la opcion de ver la lista de las actividades favoritas
+//entonces si apretas eso te lleva a la vista donde esta todo esto que es LikesScreen. Ademas esta el boton para cerrar sesion
+//y aqui se llama AuthContext de AuthProvider para usar el logout.
 export default function MasScreen({ navigation }) {
   const {logout} = useContext(AuthContext);
 

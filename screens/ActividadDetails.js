@@ -6,6 +6,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LikeButton from '../components/LikeButton';
 
 export default function ActividadDetails({ route, navigation }) {
+  
+  //aqui lo unico que estoy haciendo es agarrar los parametros de la actividad que es mandado desde MaterialScreen para luego presentarlos en la pantalla 
+  //en sus secciones correspondientes y tambien para mandarselos a el LikeButton 
   const {Titulo} = route.params;
   const {DescripcionVideo} = route.params;
   const {Video} = route.params;
@@ -16,6 +19,8 @@ export default function ActividadDetails({ route, navigation }) {
   const {Curso} = route.params;
   const {Materia} = route.params;
 
+  //Aqui el primer condicional es para cuando exista un video Youtube en las actividades, que todas las que yo inclui no tenian asique solo trabaje con la segunda condicional
+  //y por eso tiene muchas mas cosas y esta mas producida. Tu vas a tener que actualizar y copiar lo de la segunda condicional para hacer la primera igual.
   if (Video !== "undefined"){
       return(
         <View style={styles.container}>

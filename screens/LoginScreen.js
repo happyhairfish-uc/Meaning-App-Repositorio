@@ -9,6 +9,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { AuthContext } from '../navigation/AuthProvider';
 
+
+//nuevamente se usa el AuthContext de AuthProvider para usar el login y googleLogin, como en la vista de Login tenemos la opcion de hacer login con la cuenta de google y tambien login con una cuenta creada.
 export default function LoginScreen({ navigation }) {
 
     const [email, setEmail] = useState('');
